@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark sticky-top">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="#">onbook</a>
+		<ul class="navbar-nav me-auto mb-0 d-none d-md-flex">
+			<li class="nav-item">
+				<a class="nav-link active" href="/">Home</a>
+			</li>
+			<% for (const linkName in navLinks) { %>
+				<li class="nav-item">
+					<a class="nav-link" href="<%= navLinks[linkName] %>"><%= linkName %></a>
+				</li>
+			<% } %>
+		</ul>
+		<form action="/search" method="GET" class="d-flex">
+			<input name="name" class="form-control me-2" type="search" placeholder="Enter Book Name" aria-label="Search" required="required">
+			<button class="btn btn-primary" type="submit">Search</button>
+		</form>
+	</div>
+</nav>
