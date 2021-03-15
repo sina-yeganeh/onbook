@@ -1,0 +1,10 @@
+<%- include('_header') -%>
+<%- include('_description', { book }) -%>
+<div class="card m-3 shadow">
+	<div class="card-body">
+		<h3 class="card-title"><%= book.title %></h3>
+		<hr>
+		<div class="card-text"><%= book.content %></div>
+	</div>
+</div>
+<%- include('_footer') -%>

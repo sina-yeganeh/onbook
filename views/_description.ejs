@@ -1,0 +1,15 @@
+<div class="card m-3 shadow">
+	<div class="row g-0">
+		<div class="col-sm-4">
+			<img src="/public/covers/<%= book.cover || 'bulbrocket.png' %>" class="w-100">
+		</div>
+		<div class="col-sm-8">
+			<div class="card-body">
+				<h3 class="card-title"><%= book.title %></h3>
+				<hr>
+				<p class="card-text">Author: <a href="/author/<%= book.author.replace(/ /g, '-') %>" class="text-decoration-none"><%= book.author %></a></p>
+				<p class="card-text">Likes: <%= book.likes %></p>
+			</div>
+		</div>
+	</div>
+</div>
