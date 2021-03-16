@@ -28,11 +28,11 @@ app.get('/', (req, res) => db.all('SELECT * FROM books ORDER BY id DESC LIMIT 5'
 	if (err) return console.error(err.message)
 	res.render('index', { url: req.url, books: rows })
 }))
-app.get('/search', (req, res) => db.all('SELECT * FROM books WHERE title LIKE ? ORDER BY id DESC', req.query.name, (err, rows) => {
+app.get('/search', (req, res) => db.all('SELECT * FROM books WHERE title LIKE ? ORDER BY id DESC', req.query.title, (err, rows) => {
 	if (err) return console.error(err.message)
 	res.render('search', {
 		url: req.url,
-		input: req.query.name,
+		input: req.query.title,
 		books: rows
 	})
 }))
@@ -48,7 +48,14 @@ app.get('/populars', (req, res) => {
 })
 app.get('/b(ook)?/:id', (req, res) => {
 	db.get('SELECT * FROM books WHERE id = ?', req.params.id, (err, row) => {
+		if (err) return console.error(err.message)
 		res.render('book', { url: req.url, book: row })
+	})
+})
+app.get('/author/:name', (req, res) => {
+	db.all('SELECT * FROM books WHERE author = ?', req.params.name, (err, row) => {
+		if (err) return console.error(err.message)
+		res.render('author', { url: req.url, author: req.params.name, books: row })
 	})
 })
 

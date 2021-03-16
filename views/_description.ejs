@@ -7,7 +7,7 @@
 			<div class="card-body">
 				<h3 class="card-title"><%= book.title %></h3>
 				<hr>
-				<p class="card-text">Author: <a href="/author/<%= book.author.replace(/ /g, '-') %>" class="text-decoration-none"><%= book.author %></a></p>
+				<p class="card-text">Author: <a href="/author/<%= encodeURIComponent(book.author) %>" class="text-decoration-none"><%= book.author %></a></p>
 				<p class="card-text">Likes: <%= book.likes %></p>
 			</div>
 		</div>
