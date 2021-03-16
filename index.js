@@ -41,7 +41,7 @@ app.get('/best', (req, res) => {
 	// but simply redirect to homepage for now
 	res.redirect('/')
 })
-app.get('/populars', (req, res) => {
+app.get('/popular', (req, res) => {
 	// supposed to render most visited books
 	// but simply redirect to homepage for now
 	res.redirect('/')
