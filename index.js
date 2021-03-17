@@ -3,7 +3,7 @@ const sqlite3 = require('sqlite3').verbose()
 const path = require('path')
 
 const dbPath = path.join(__dirname, 'data', 'books.db')
-const db = new sqlite3.Database(dbPath, err => {
+const db = new sqlite3.Database(dbPath, (err) => {
 	if (err) return console.error(err.message)
 	console.log("Successful connection to the database.")
 })
@@ -11,8 +11,8 @@ const db = new sqlite3.Database(dbPath, err => {
 db.run(`CREATE TABLE IF NOT EXISTS books (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, title VARCHAR NOT NULL, content TEXT, author VARCHAR NOT NULL, likes INTEGER NOT NULL)`, err => {
 	if (err) return console.error(err.message)
 	console.log('Books table created successfuly.')
-	db.run(`INSERT INTO books (title, content, author, likes) VALUES ('Hello', 'My name is ashkan', 'Ashkan Laei', 12), ('Hi', 'Mahdi', 'Ashkan Laei', 43), ('End', 'Third content', 'Ashkan Laei', 32)`, err => {
-		if (err) return console.error(err)
+	db.run(`INSERT INTO books (title, content, author, likes) VALUES ('Hello', 'My name is ashkan', 'Ashkan Laei', 12), ('Hi', 'Mahdi', 'Ashkan Laei', 43), ('End', 'Third content', 'Ashkan Laei', 32)`, (err) => {
+		if (err) throw new Error(err)
 		console.log('Samples inserted successfuly.')
 	})
 })
